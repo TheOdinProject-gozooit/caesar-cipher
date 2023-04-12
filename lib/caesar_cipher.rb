@@ -11,10 +11,11 @@ end
 # Return the shifted byte accordingly to the shift factor, includes the wraps
 def shifter(byte, shift_factor)
   shifted_byte = byte + shift_factor
+  wrapper = shift_factor.negative? ? 26 : -26
   if UPPER_RANGE.include?(byte) && !UPPER_RANGE.include?(shifted_byte)
-    shifted_byte - 26
+    shifted_byte + wrapper
   elsif LOWER_RANGE.include?(byte) && !LOWER_RANGE.include?(shifted_byte)
-    shifted_byte - 26
+    shifted_byte + wrapper
   else
     shifted_byte
   end
