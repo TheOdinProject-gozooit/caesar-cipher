@@ -5,11 +5,7 @@ LOWER_RANGE = (97..122).freeze
 def caesar_cipher(str, shift_factor)
   str_bytes = str.bytes
   str_bytes.map! { |byte| letter?(byte) ? shifter(byte, shift_factor) : byte }
-  res = str_bytes.pack('c*')
-  # ! We are using puts here to comply with the exercise, but would be better to return the value instead,
-  # ! then use "puts caesar_cipher(str, shift_factor) to see the output"
-  puts res
-  res
+  str_bytes.pack('c*')
 end
 
 # Return the shifted byte accordingly to the shift factor, includes the wraps
@@ -32,4 +28,5 @@ end
 
 # Add TOP example so can be run with "ruby ./caesar_cipher.rb"
 
-caesar_cipher('What a string!', 5) # returns "Bmfy f xywnsl!"
+puts 'Using Caesar Cipher with a shift factor of 5 on "What a string!" :'
+puts caesar_cipher('What a string!', 5) # returns "Bmfy f xywnsl!"
